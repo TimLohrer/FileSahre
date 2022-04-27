@@ -1,0 +1,16 @@
+body {
+    background-color: var(--dark);
+    text-align: center;    
+}
+.--msg {
+    color: white;
+    font-weight: 500;
+    margin-top: 25%;
+}
+.--file {
+    color: var(--red);
+}
+.--redirect {
+    color: var(--text);
+    font-weight: 300;
+}

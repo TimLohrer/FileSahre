@@ -1,0 +1,32 @@
+@font-face {
+    font-family: 'Poppins';
+    src: url(../assets/fonts/Poppins-Medium.ttf);
+}
+@font-face {
+    font-family: 'Open Sans';
+    src: url(../assets/fonts/OpenSans-Medium.ttf);
+}
+@font-face {
+    font-family: 'Work Sans';
+    src: url(../assets/fonts/WorkSans-Bold.ttf);
+}
+@font-face {
+    font-family: 'Roboto';
+    src: url(../assets/fonts/Roboto-Black.ttf);
+}
+
+.Poppins {
+    font-family: 'Poppins';
+}
+.Open_Sans {
+    font-family: 'Open Sans';
+    font-weight: 600;
+}
+
+.Work_Sans {
+    font-family: 'Work Sans';
+}
+
+.Roboto {
+    font-family: 'Roboto';
+}

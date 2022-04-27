@@ -1,0 +1,46 @@
+{
+    "accounts": [
+        {
+            "name": "Tim Lohrer",
+            "password": "eGAU305P6d8zprCLbmJNz06gyrywWsSK3ts9LHto9Bk=",
+            "files": [
+                {
+                    "name": "logger.exe",
+                    "size": 9028104,
+                    "downloads": 0
+                },
+                {
+                    "name": "get_wlan.exe",
+                    "size": 8681192,
+                    "downloads": 1
+                },
+                {
+                    "name": "GRATZELZELLE.docx",
+                    "size": 14391590,
+                    "downloads": 5
+                },
+                {
+                    "name": "{}.png",
+                    "size": 2136,
+                    "downloads": 0
+                }
+            ]
+        },
+        {
+            "name": "Leo Günzler",
+            "password": "T693csvkVDuxSOSGRw1QZlvr9OBH+7eE2JoCgqu8zgc=",
+            "files": [
+                {
+                    "name": "Info.py",
+                    "size": 7410,
+                    "downloads": 1
+                }
+            ]
+        },
+        {
+            "name": "Mattis Knust",
+            "password": "92b0n7CBySlSLikpCOX/9g59SbdFDg9keJzP7Q3uoDI=",
+            "files": []
+        }
+    ]
+}

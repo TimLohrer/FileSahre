@@ -1,0 +1,30 @@
+body {
+    background-color: var(--dark);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.--div {
+    background-color: var(--grey);
+    padding: 20px 50px 20px 50px;
+    border-radius: 10px;
+}
+
+.--file {
+    color: white;
+}
+
+.--button {
+    background-color: var(--blurple);
+    font-size: medium;
+    font-weight: 500;
+    color: var(--dark);
+    cursor: pointer;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 50px;
+}

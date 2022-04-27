@@ -1,0 +1,6 @@
+#Folders
+node_modules
+
+#Files
+src/uploads/*
+package-lock.json

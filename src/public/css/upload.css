@@ -1,0 +1,87 @@
+body {
+    height: 100%;
+    background-color: var(--dark);
+    text-align: center;
+    margin-top: 100px;
+}
+
+.--title {
+    margin-top: 200px;
+    color: white;
+}
+
+.--upload {
+    margin-top: 20px;
+    width: 600px;
+    height: 400px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+    .--input-label {
+        color: var(--elight);
+        font-size: medium;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+    .--input-div {
+        cursor: pointer;
+        border: 2px;
+        border-style: solid;
+        border-radius: 10px;
+        border-color: var(--blurple);
+        margin-top: 20px;
+        height: 100%;
+        width: 100%;
+    }
+    .--input {
+        cursor: pointer;
+        opacity: 0;
+        height: 100%;
+        width: 100%;
+    }
+    .--upload-button {
+        font-size: medium;
+        cursor: normal;
+        margin-top: 30px;
+        padding: 15px;
+        border: none;
+        border-radius: 5px;
+        background-color: var(--green);
+    }
+.--my-files {
+    margin-top: 20px;
+    font-size: medium;
+    color: var(--dark);
+    cursor: pointer;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--blurple);
+}
+.--uploaded {
+    margin-top: 30px;
+}
+    .--link-text {
+        color: var(--text);
+        font-weight: normal;
+    }
+    .--copy-button {
+        cursor: pointer;
+        margin-top: 30px;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: var(--green);
+        margin-right: 10px;
+    }
+    .--back-button {
+        cursor: pointer;
+        margin-top: 30px;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: var(--blurple);
+        margin-left: 10px;
+    }

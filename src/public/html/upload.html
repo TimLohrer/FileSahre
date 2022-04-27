@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/color.css">
+    <link rel="stylesheet" href="../css/font.css">
+    <link rel="stylesheet" href="../css/values.css">
+    <link rel="shortcut icon" href="../assets/logo.svg" type="image/x-icon">
+    <title>Upload File</title>
+    {css}
+</head>
+<body class="Roboto">
+    <h1 id="title" class="--title_" style="color: white;">File Upload</h1>
+    <div id="upload" class="--upload">
+        <label for="file-input" class="--input-label">Drag in your files in the box below or click here.</label>
+        <div class="--input-div">
+            <input id="file-input" class="--input" type="file" name="file" draggable="true"><br>
+        </div>
+        <button id="upload-button" class="--upload-button">Upload File</button>
+        <br>
+        <button class="--my-files" onclick="files()">My Files</button>
+    </div>
+    <div id="uploaded" class="--uploaded" hidden>
+        <h4 id="link-text" class="--link-text"></h4>
+        <button id="copy-button" class="--copy-button">Copy Link</button>
+        <button class="--my-files" onclick="files()">My Files</button>
+        <button id="back" class="--back-button" onclick="window.location.reload()">Upload more</button>
+    </div>
+</body>
+{js}
+{loginManager}
+</html>

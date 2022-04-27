@@ -1,0 +1,104 @@
+body {
+    text-align: center;
+    background-color: var(--dark);
+}
+
+.--title {
+    margin-top: 50px;
+    color: white;
+}
+
+.--login {
+    margin-right: 10px;
+    margin-top: 250px;
+    font-weight: normal;
+    font-size: large;
+    color: var(--dark);
+    cursor: pointer;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--green);
+}
+
+.--upload {
+    margin-left: 10px;
+    font-weight: normal;
+    font-size: large;
+    color: var(--dark);
+    cursor: pointer;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--blurple);
+}
+
+.--account {
+    color: white;
+    margin-top: 100px;
+    margin-bottom: 10px;
+}
+
+.--file {
+    margin-top: 0px;
+    margin-bottom: 10px;
+    height: 36px;
+}
+
+.--filename {
+    color: white;
+    padding-right: 50px;
+    margin-left: 5%;
+    font-weight: 200;
+}
+
+.--copy {
+    font-weight: 600;
+    color: var(--dark);
+    margin-left: 50px;
+    cursor: pointer;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--green);
+    margin-right: 10px;
+}
+.--download {
+    font-weight: 600;
+    color: var(--dark);
+    cursor: pointer;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--blurple);
+    margin-right: 10px;
+}
+.--delete {
+    font-weight: 600;
+    color: var(--dark);
+    cursor: pointer;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--red);
+    margin-right: 10px;
+}
+.--error {
+    margin-top: 50px;
+    color: var(--elight);
+    font-weight: 300;
+}
+.--error-ins {
+    color: var(--red);
+}
+.--reload {
+    font-weight: 600;
+    color: var(--dark);
+    margin-left: 2%;
+    margin-top: 100px;
+    cursor: pointer;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--blurple);
+}
