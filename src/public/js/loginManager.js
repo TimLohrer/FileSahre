@@ -1,41 +1,44 @@
 const API = 'https://login.timlohrer.de'
+let __PASSWORD__ = ''
 
-async function login() {
+function getCookie (key = String) {
+    const cookies = document.cookie.split('; ')
+    let cookie
+    cookies.forEach(_cookie => {
+        if (_cookie.split('=')[0] == key) {
+            cookie = _cookie.split('=')[1]
+        }
+    })
+    if (cookie) { return cookie }
+    else { return null }
+}
+
+window.onload = async () => {
     const params = new URLSearchParams(document.location.search.substring(1));
-    const session = params.get('session')
-    if (!session) { return; }
-    const __SESSION__ = `${session.split('‎')[0]}‎${session.split('‎')[1]}`
-    const res = await fetch(`${API}/api/check-session`, {
+    let session = params.get('session')?.split('|') || getCookie('timlohrer_session')?.split('‎') || null
+    if (params.get('session')) {
+        window.history.replaceState({}, document.title, document.location.origin + '/')
+    }
+    if (!session) { return window.open(`https://login.timlohrer.de/?redirect=${document.location}`, '_self') }
+    const __SESSION__ = `${session[0]}‎${session[1]}‎${session[2] || 24 * 60 * 60 * 1000}`
+    const res = await fetch(`${API}/api/check-session?scopes=api_key.share`, {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ email: session.split('‎')[0], session: session.split('‎')[1] })
+        body: JSON.stringify({ email: session[0], session: session[1] })
     })
-    console.log(res);
     if (res.ok == true) {
-        if (__REDIRECT__ && __REDIRECT__ != '' && allowed[0] != '*' && !allowed.includes(__REDIRECT__.split('/')[0])) {
-            alert('You are not allowed to access this page!')
-            return window.open(`https://login.timlohrer.de/?redirect=${document.location}`, '_self')
-        }
-        const allowed = await res.json()
+        let { scopes } = await res.json()
         const now = new Date()
         const time = now.getTime()
-        const expire = time + 365 * 24 * 60 * 60 * 1000
+        const expire = time + parseInt(session[2]) || 24 * 60 * 60 * 1000
         now.setTime(expire)
-        if (email && session) {
+        if (__SESSION__) {
             document.cookie = `timlohrer_session=${__SESSION__};expires=${now.toUTCString()};path=/`
-            window.open('/', '_self')
         }
-        const cookies = document.cookie
-        for (let cookie of cookies.split('; ')) {
-            if (cookie.split('=')[0] == 'timlohrer_session') {
-                // const email = cookie.split('=')[1].split('‎')[0]
-                // const session = cookie.split('=')[1].split('‎')[1]
-                return true
-            }
-        }
+        if (scopes) { __PASSWORD__ = scopes.api_key }
     } else {
         document.cookie = `timlohrer_session=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/`
         alert('Something went wrong, please login again!')

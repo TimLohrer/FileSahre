@@ -1,28 +1,8 @@
-async function login () {
-    const pw = prompt('Please enter your password:')
-    if (!pw) { return; }
-    const res = await fetch('{url}/api/check_pw', {
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ pw: pw, master: true })
-    })
-
-    if (res.status !== 200) {
-        if (res.status == 401) {
-            return alert(`Incorrect password.`)
-        } else {
-            return alert(`Failed to verify password.`)
-        }
-    }
-    get_files(pw)
-}
 function upload () {
     return window.open('/upload', '_self')
 }
-async function get_files (pw) {
+
+async function get_files () {
     const reload = document.getElementById('reload')
     if (reload) {
         reload.style.opacity = '60%'
@@ -34,7 +14,7 @@ async function get_files (pw) {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ pw: pw })
+        body: JSON.stringify({ pw: __PASSWORD__ })
     })
 
     if (res.status !== 200) {
@@ -42,8 +22,9 @@ async function get_files (pw) {
     }
     document.body.innerHTML = (await res.json()).list
 }
-async function delete_file (file, name, pw) {
-    const res = await fetch(`{url}/api/delete/${file}`, {
+
+async function delete_file (file, uuid, name) {
+    const res = await fetch(`{url}/api/delete/${uuid}.${file}`, {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
@@ -59,13 +40,14 @@ async function delete_file (file, name, pw) {
             alert(`Something went wrong while trying to delete "${file}". Please contact Aim_shock for help.`)
         }
     }
-    get_files(pw)
+    get_files(__PASSWORD__)
 }
-function copy (file) {
-    const copy = document.getElementById(`copy-${file}`)
+
+function copy (file, uuid) {
+    const copy = document.getElementById(`copy-${uuid}`)
     const temp = document.createElement('textarea');
     document.body.appendChild(temp);
-    temp.value = `{url}/${file}`
+    temp.value = `{url}/${uuid}.${file}`
     temp.select();
     document.execCommand('copy');
     document.body.removeChild(temp)

@@ -2,45 +2,20 @@
     "accounts": [
         {
             "name": "Tim Lohrer",
-            "password": "eGAU305P6d8zprCLbmJNz06gyrywWsSK3ts9LHto9Bk=",
-            "files": [
-                {
-                    "name": "logger.exe",
-                    "size": 9028104,
-                    "downloads": 0
-                },
-                {
-                    "name": "get_wlan.exe",
-                    "size": 8681192,
-                    "downloads": 1
-                },
-                {
-                    "name": "GRATZELZELLE.docx",
-                    "size": 14391590,
-                    "downloads": 5
-                },
-                {
-                    "name": "{}.png",
-                    "size": 2136,
-                    "downloads": 0
-                }
-            ]
+            "password": "RDUkwNInD3KPtiAGXmIjPzgPl16V1ZJXXfKca8w+jXiAgfe9RKOULTUeX9qWmf+o4cHb8KoEC9M8IJWk3EuQW+uLZyRtPpsjyuqwhoSvbLMkRPNRwAs4UFPjRl1xIrHiKTn8qhif9euCKx5e1Xbzs8EcsO0WOPCzrPxaIr8ZQvEyMje8IwV8OUFy6HXWCP3GA9TOmWwkx3zAzPWX6I3HBwbaIdvyYUCAHkUE1IzZezhHbkUciGrAISl6ET1VNgT0EX6mDnwSNEz+F9hfMo0CSxsTCLnU1uM2+JVpW1DJBxHo1jQ/JXNqNcgTq1cpccwGtO33fKkLXdzCi6ikNHlcv6xbIbZgb9CXl6GzF+cWdv723TMZcseI1mAskw+/VLgEHxr5cy8EPYuFS7r5N30DOUeLHqm1tGzPE/Z+YTq8xton0XlgxvzKPeB+pQOulE9kvWYZT9Z7vAwknMZSRHgYhUVWMAxar8E+w51/hgMVlWZFutCoTQTyl7VD8fAsbhHlvEqPJCwE9z9+QtlxD7sJD087LHExDmxh8mx7utdhQQH8MzK3APmZvDstv35i4yc61RPowjbrG/gAG6+oXs9kOHcE+YOa/Yl64GUgQw6sXAqzoKtZyX6wMZu+SBxn5CeZRSiZBKtI2SZBCPTirY6gW49m0G0JkFfl85xPcO89iDM",
+            "files": []
         },
         {
             "name": "Leo Günzler",
-            "password": "T693csvkVDuxSOSGRw1QZlvr9OBH+7eE2JoCgqu8zgc=",
+            "password": "rx5vyUlg0QFYOoBiZe3nI5RVf4caOyboQYt2V0mzJGiZcPWoiOf0jZuev8qR1+r2MIbfy8/GHk5QgoG8M/pVo0kxBeq6/obw5OgBS2WUc7V01MwoVuPn8/f+/M/xQfZLiBzP/aAmvzjXdq8rSFwSko+F+uL5cmcf3W9nZ1bJr/RdkJrkgQWWKNtDn12e5GvpudI2ShJvLIAW1BrUJMKE9K3+PTAJOeZNGjR2rQoZiLx8hh+EpZO9H/00Frq2IFFDVm4URuRw37ZVLUYZroVwlUfploL58vZq5Z12FRkhV+KIi+9f6M/nOYe7aFIHwwLmHq8dvZW8+8lfUwVjExrHgAOPYD4e5kg6SqV5LxoqDul2JRlH44xu0Um/lT9EeNVlMcA4axrSbxOmsrOpHhUAr9OkjjxhHUQB3CjEN9AABFT4xB6g4QOZQfJEB3wN+0NvyKZAGhgNRt2DkJx3P7AdBIc2LtZMk8vmEdOXiJp4zyvo02LtykacIB26QHm9hzzeU8w9UKWf21qamzZTHjCJII36GQ3Dfy5F1lvOvzxIQNCP1hyvU/q37htjCSUCqEV+gAue0R90oy4cVIpYSNrUglPp4/Oiqi3hs+Mq57tUbjFxCPpr8WatD8o6+RGSJ8SXk0rWERFifFylsyZ0sF7sWpdn0/xurzDgY8VrYrLjBMA",
             "files": [
                 {
                     "name": "Info.py",
+                    "uuid": "5",
                     "size": 7410,
-                    "downloads": 1
+                    "downloads": 4
                 }
             ]
-        },
-        {
-            "name": "Mattis Knust",
-            "password": "92b0n7CBySlSLikpCOX/9g59SbdFDg9keJzP7Q3uoDI=",
-            "files": []
         }
     ]
 }
