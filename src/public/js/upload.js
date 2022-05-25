@@ -28,6 +28,7 @@ function get_size (_size) {
     return size
 }
 
+let uuid;
 setInterval(() => {
     const { files } = input
     if (!files[0]) {
@@ -40,50 +41,31 @@ setInterval(() => {
         upload_button.style.cursor = 'pointer'
         upload_button.innerHTML = `Upload<br>${files[0].name} (${get_size(files[0].size)})`
         upload_button.onclick = async () => {
-            const pw = prompt('Please enter your password:')
-            if (!pw) { return alert('Incorrect password!') }
-            const _res = await fetch(`{url}/api/check_pw`, {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ pw: pw })
-            }).catch(err => alert(err))
-
-            if (_res.status !== 200) {
-                if (_res.status == 401) {
-                    return alert(`Incorrect password.`)
-                } else {
-                    return alert(`Failed to verify password.`)
-                }
-            }
-
             const formData = new FormData()
             formData.append('file', files[0])
 
-            const res = await fetch(`{url}/api/upload/${pw}`, {
+            uuid = crypto.randomUUID()
+
+            const res = await fetch(`{url}/api/upload?pw=${__PASSWORD__}&uuid=${uuid}`, {
                 method: 'POST',
                 body: formData
-            }).catch(err => alert(err, 'g'))
+            }).catch(err => alert(err))
 
             if (res.status !== 200) {
-                if (res.status == 403) {
-                    return alert(`The file "${files[0].name}" already exists.`)
-                } else {
-                    return alert(`Something went wrong while uploading "${files[0].name}".`)
-                }
+                console.log(res.status)
+                return alert(`Something went wrong while uploading "${files[0].name}".`)
             }
             
             title.innerHTML = `Done uploading ${files[0].name} (${get_size(files[0].size)})`
-            link.innerHTML = `{url}/${files[0].name}`
+            link.innerHTML = `{url}/${uuid}.${files[0].name}`
             uploaded.hidden = false
             upload.hidden = true
         }
         copy.onclick = async () => {
+            console.log(uuid);
             const temp = document.createElement('textarea');
             document.body.appendChild(temp);
-            temp.value = `{url}/${files[0].name}`
+            temp.value = `{url}/${uuid}.${files[0].name}`
             temp.select();
             document.execCommand('copy');
             document.body.removeChild(temp)

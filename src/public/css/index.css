@@ -8,7 +8,7 @@ body {
     color: white;
 }
 
-.--login {
+.--my-files {
     margin-right: 10px;
     margin-top: 250px;
     font-weight: normal;
@@ -101,4 +101,15 @@ body {
     border: none;
     border-radius: 5px;
     background-color: var(--blurple);
+}
+.--upload-link {
+    font-weight: 600;
+    color: var(--dark);
+    margin-left: 5px;
+    margin-top: 100px;
+    cursor: pointer;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--green);
 }

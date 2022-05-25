@@ -2,45 +2,39 @@
     "accounts": [
         {
             "name": "Tim Lohrer",
-            "password": "eGAU305P6d8zprCLbmJNz06gyrywWsSK3ts9LHto9Bk=",
+            "password": "RDUkwNInD3KPtiAGXmIjPzgPl16V1ZJXXfKca8wjXiAgfe9RKOULTUeX9qWmfo4cHb8KoEC9M8IJWk3EuQWuLZyRtPpsjyuqwhoSvbLMkRPNRwAs4UFPjRl1xIrHiKTn8qhif9euCKx5e1Xbzs8EcsO0WOPCzrPxaIr8ZQvEyMje8IwV8OUFy6HXWCP3GA9TOmWwkx3zAzPWX6I3HBwbaIdvyYUCAHkUE1IzZezhHbkUciGrAISl6ET1VNgT0EX6mDnwSNEzF9hfMo0CSxsTCLnU1uM2JVpW1DJBxHo1jQJXNqNcgTq1cpccwGtO33fKkLXdzCi6ikNHlcv6xbIbZgb9CXl6GzFcWdv723TMZcseI1mAskwVLgEHxr5cy8EPYuFS7r5N30DOUeLHqm1tGzPEZYTq8xton0XlgxvzKPeBpQOulE9kvWYZT9Z7vAwknMZSRHgYhUVWMAxar8Ew51hgMVlWZFutCoTQTyl7VD8fAsbhHlvEqPJCwE9z9QtlxD7sJD087LHExDmxh8mx7utdhQQH8MzK3APmZvDstv35i4yc61RPowjbrGgAG6oXs9kOHcEYOaYl64GUgQw6sXAqzoKtZyX6wMZuSBxn5CeZRSiZBKtI2SZBCPTirY6gW49m0G0JkFfl85xPcO89iDM",
             "files": [
                 {
-                    "name": "logger.exe",
-                    "size": 9028104,
-                    "downloads": 0
-                },
-                {
-                    "name": "get_wlan.exe",
-                    "size": 8681192,
-                    "downloads": 1
-                },
-                {
-                    "name": "GRATZELZELLE.docx",
-                    "size": 14391590,
-                    "downloads": 5
-                },
-                {
-                    "name": "{}.png",
-                    "size": 2136,
+                    "name": "app-release.apk",
+                    "uuid": "542c73f8-b266-4b08-97ff-b8ebf547bbb3",
+                    "size": 19931591,
                     "downloads": 0
                 }
             ]
         },
         {
             "name": "Leo Günzler",
-            "password": "T693csvkVDuxSOSGRw1QZlvr9OBH+7eE2JoCgqu8zgc=",
+            "password": "rx5vyUlg0QFYOoBiZe3nI5RVf4caOyboQYt2V0mzJGiZcPWoiOf0jZuev8qR1r2MIbfy8GHk5QgoG8MpVo0kxBeq6obw5OgBS2WUc7V01MwoVuPn8fMxQfZLiBzPaAmvzjXdq8rSFwSkoFuL5cmcf3W9nZ1bJrRdkJrkgQWWKNtDn12e5GvpudI2ShJvLIAW1BrUJMKE9K3PTAJOeZNGjR2rQoZiLx8hhEpZO9H00Frq2IFFDVm4URuRw37ZVLUYZroVwlUfploL58vZq5Z12FRkhVKIi9f6MnOYe7aFIHwwLmHq8dvZW88lfUwVjExrHgAOPYD4e5kg6SqV5LxoqDul2JRlH44xu0UmlT9EeNVlMcA4axrSbxOmsrOpHhUAr9OkjjxhHUQB3CjEN9AABFT4xB6g4QOZQfJEB3wN0NvyKZAGhgNRt2DkJx3P7AdBIc2LtZMk8vmEdOXiJp4zyvo02LtykacIB26QHm9hzzeU8w9UKWf21qamzZTHjCJII36GQ3Dfy5F1lvOvzxIQNCP1hyvUq37htjCSUCqEVgAue0R90oy4cVIpYSNrUglPp4Oiqi3hsMq57tUbjFxCPpr8WatD8o6RGSJ8SXk0rWERFifFylsyZ0sF7sWpdn0xurzDgY8VrYrLjBMA",
             "files": [
                 {
                     "name": "Info.py",
+                    "uuid": "5",
                     "size": 7410,
-                    "downloads": 1
+                    "downloads": 4
                 }
             ]
         },
         {
-            "name": "Mattis Knust",
-            "password": "92b0n7CBySlSLikpCOX/9g59SbdFDg9keJzP7Q3uoDI=",
-            "files": []
+            "name": "Axel Payer",
+            "password": "vGrv7AIovJnnjV9adTfrerptT2ozdPXZEQf7bfmPc2w8gGNvacbxiksqlfkmzVo4YU64tQPDAqb9417a4nYLm2LZyH1fuBJ3yO3RGDQnUksMBCWrkyERfo3vovcqnbN00ReWMmbxfnDoGp1704G2FVTdHLIKKbCQUqVWw7VlleEv3pIbbjTVdpeClN6IYINCSBL00XZEt0fXU21nNSjgbQjLX377EjiVjOdArz0spBVZwQCzrt3pyZwMF3yWQKNSoyYiRzHRqA5j3iFtiwIHg0BZNt8S9bszg249fC6xqal5zoqh9NSQxRlpw1RHf29eAGHmxziMyd0e96X6BxDpqwhnjpw9p1yO3ZFhunr9tci0StDvpUPMbPUmqaqYM52ax5uonpI520Gznl5RFPtJrLRBgTUWMkhv0Fe61sJVEwZLbVkatAclSY42mikoYPV4wYm7oYjuMIGN2IGfRthFJhnsgTxQitWfyvcYMtT3VlL9LSjMjm5NlgwnUH1I60RBrzV1jffaDmQ6fKEiI4v77ackRZPiBz8OcLon5hEoGbJMT6D0XgC7aQGX6QehM9r89osTryVTyWOnNpHUGXZKGJlAjqm9zCLLPzwtq7ExMnYG7YbCE2kYUCQGNltCw45uEgdBJ0yIq1EBRbnwNf4",
+            "files": [
+                {
+                    "name": "wahlomat.py",
+                    "uuid": "f6f2382f-0706-4c7b-b48b-0fb0ec507932",
+                    "size": 12644,
+                    "downloads": 0
+                }
+            ]
         }
     ]
 }
