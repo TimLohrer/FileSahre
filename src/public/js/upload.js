@@ -46,12 +46,13 @@ setInterval(() => {
 
             uuid = crypto.randomUUID()
 
-            const res = await fetch(`{url}/api/upload/${__PASSWORD__}?uuid=${uuid}`, {
+            const res = await fetch(`{url}/api/upload?pw=${__PASSWORD__}&uuid=${uuid}`, {
                 method: 'POST',
                 body: formData
             }).catch(err => alert(err))
 
             if (res.status !== 200) {
+                console.log(res.status)
                 return alert(`Something went wrong while uploading "${files[0].name}".`)
             }
             

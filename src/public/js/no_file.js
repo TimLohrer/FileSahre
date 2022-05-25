@@ -1,1 +1,1 @@
-// setInterval(() => { window.open('/', '_self') }, 5 * 1000)
+setInterval(() => { window.open('/', '_self') }, 5 * 1000)

@@ -91,11 +91,12 @@ app.post('/api/check_pw', async (req, res) => {
     else { return res.sendStatus(200) }
 })
 
-app.post('/api/upload/:pw', upload.single('file'), async (req, res) => {
+app.post('/api/upload', upload.single('file'), async (req, res) => {
     const { file } = req
-    const { pw } = req.params
+    const { pw } = req.query
     if (!file || !pw) { return res.sendStatus(500) }
     const { account, db } = get_account({ pw })
+    console.log(account, pw)
     if (!account || !db) { return res.sendStatus(401) }
     account.files.push({ name: file.originalname, uuid: req.query.uuid, size: file.size, downloads: 0 })
     fs.writeFileSync('src/data/db.json', JSON.stringify(db, null, 4), err => { err ? console.log(err) : {} })

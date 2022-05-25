@@ -44,4 +44,10 @@ window.onload = async () => {
         alert('Something went wrong, please login again!')
         return window.open(`https://login.timlohrer.de/?redirect=${document.location}`, '_self')
     }
+    setInterval(() => {
+        if (!getCookie('timlohrer_session')) {
+            alert('Something went wrong, please login again!')
+            return window.open(`https://login.timlohrer.de/?redirect=${document.location}`, '_self')
+        }
+    }, 100)
 }
