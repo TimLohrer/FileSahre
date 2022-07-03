@@ -57,7 +57,7 @@ setInterval(() => {
             }
             
             title.innerHTML = `Done uploading ${files[0].name} (${get_size(files[0].size)})`
-            link.innerHTML = `{url}/${uuid}.${files[0].name}`
+            link.innerHTML = `{url}/${uuid}.${files[0].name.replaceAll(' ', '_')}`
             uploaded.hidden = false
             upload.hidden = true
         }
@@ -65,7 +65,7 @@ setInterval(() => {
             console.log(uuid);
             const temp = document.createElement('textarea');
             document.body.appendChild(temp);
-            temp.value = `{url}/${uuid}.${files[0].name}`
+            temp.value = `{url}/${uuid}.${files[0].name.replaceAll(' ', '_')}`
             temp.select();
             document.execCommand('copy');
             document.body.removeChild(temp)

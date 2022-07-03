@@ -10,10 +10,19 @@ const url = process.env.URL
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, 'src/uploads')
+        if (file.originalname.endsWith('.apk')) {
+            cb(null, 'src/uploads/static')
+        } else {
+            cb(null, 'src/uploads')
+        }
     },
     filename: (req, file, cb) => {
-        cb(null, `${req.query.uuid}.${file.originalname}`);
+        if (file.originalname.endsWith('.apk')) {
+            cb(null, file.originalname.replaceAll(' ', '_'))
+        }
+        else {
+            cb(null, `${req.query.uuid}.${file.originalname.replaceAll(' ', '_')}`);
+        }
     }
 })
 
@@ -82,26 +91,25 @@ app.get('/upload', async (req, res) => {
     return res.send(build_page('upload'))
 })
 
-app.post('/api/check_pw', async (req, res) => {
-    const { pw, master } = req.body
-    if (!pw) { return res.sendStatus(500) }
-    const { account } = get_account({ pw })
-    if (master && pw == process.env.MASTER_PASSWORD) { return res.sendStatus(200) }
-    if (!account) { return res.sendStatus(401) }
-    else { return res.sendStatus(200) }
-})
-
 app.post('/api/upload', upload.single('file'), async (req, res) => {
     const { file } = req
     const { pw } = req.query
     if (!file || !pw) { return res.sendStatus(500) }
     const { account, db } = get_account({ pw })
-    console.log(account, pw)
     if (!account || !db) { return res.sendStatus(401) }
     account.files.push({ name: file.originalname, uuid: req.query.uuid, size: file.size, downloads: 0 })
     fs.writeFileSync('src/data/db.json', JSON.stringify(db, null, 4), err => { err ? console.log(err) : {} })
     res.sendStatus(200)
     return console.log(`${account.name} uploaded "${file.filename}" (${file.size}).`)
+});
+
+app.post('/api/static/pulsatrix/upload', upload.single('file'), async (req, res) => {
+    const { file } = req
+    const { pw } = req.query
+    if (!file || !pw) { return res.sendStatus(500) }
+    if (pw != process.env.PULSATRIX) { return res.sendStatus(401) }
+    res.sendStatus(200)
+    return console.log(`PULSATRIX uploaded "${file.filename}" (${file.size}).`)
 });
 
 app.get('/:file', async (req, res) => {
@@ -116,7 +124,7 @@ app.get('/:file', async (req, res) => {
 app.get('/:file/download', async (req, res) => {
     let { file } = req.params
     if (fs.existsSync(`${__dirname}/uploads/${file}`)) {
-        res.download(`${__dirname}/uploads/${file}`)
+        res.download(`${__dirname}/uploads/${file}`, file.split('.').slice(1).join('.'))
         delete require.cache[require.resolve(`./data/db.json`)]
         const db = require('./data/db.json')
         db.accounts.forEach((account) => {
@@ -132,48 +140,45 @@ app.get('/:file/download', async (req, res) => {
     }
 })
 
+app.get('/preview/:file', async (req, res) => {
+    let { file } = req.params
+    if (fs.existsSync(`${__dirname}/uploads/${file}`)) {
+        return res.sendFile(`${__dirname}/uploads/${file}`)
+    } else {
+        return res.send(build_page('no_file', file))
+    }
+})
+
+app.get('/:file/static/download', async (req, res) => {
+    let { file } = req.params
+    if (fs.existsSync(`${__dirname}/uploads/static/${file}`)) {
+        res.download(`${__dirname}/uploads/static/${file}`)
+         return console.log(`Someone downloaded "${file}".`)
+    } else {
+        return res.send(`Could not find "${file}"`)
+    }
+})
+
 app.post('/api/files', async (req, res) => {
     const { pw } = req.body
-    const { db, account } = get_account({ pw })
-    if (!account && pw !== process.env.MASTER_PASSWORD) { return res.sendStatus(500) }
+    const { account } = get_account({ pw })
     let list = '';
-    if (pw == process.env.MASTER_PASSWORD) {
-        list += '<h1 class="--title">All Files</h1>'
-        db.accounts.forEach((_account) => {
-            list += `<h2 class="--account">${_account.name} ${_account.files.length > 0 ? `(${_account.files.length} File${_account.files.length > 1 ? 's' : ''})` : ''}</h2>`
-            _account.files.forEach((file) => {
-                list += `
-                <div class="--file Roboto">
-                <br>
-                <h4 class="--filename">${file.name} (${get_size(file.size)})
-                <button class="--copy" id="copy-${file.uuid}" onclick="copy('${file.name}', '${file.uuid}')">Copy Link</button>
-                <button class="--download" onclick="window.open('/${file.uuid}.${file.name}/download', '_self')">Download</button>
-                <button class="--delete" onclick="delete_file('${file.name}', '${file.uuid}', '${_account.name}', '${pw}')">Delete</button>
-                </h4>
-                </div>
-                `
-            })
-            if (_account.files.length < 1) {
-                list += `<h2 class="--error Roboto">${_account.name} currently <ins class="--error-ins">doesn't</ins> have any files saved.</h1>`
-            }
-        })
-    } else {
-        list += '<h1 class="--title">Your Files</h1>'
-        account.files.forEach((file) => {
-            list += `
-            <div class="--file Roboto">
-            <br>
-            <h4 class="--filename">${file.name} (${get_size(file.size)})
-            <button class="--copy" id="copy-${file.uuid}" onclick="copy('${file.name}', '${file.uuid}')">Copy Link</button>
-            <button class="--download" onclick="window.open('/${file.uuid}.${file.name}/download', '_self')">Download</button>
-            <button class="--delete" onclick="delete_file('${file.name}', '${file.uuid}', '${account.name}', '${pw}')">Delete</button>
-            </h4>
-            </div>
-            `
-        })
-        if (account.files.length < 1) {
-            list += `<h2 class="--error Roboto">You currently <ins class="--error-ins">don't</ins> have any files saved.</h1>`
-        }
+    list += '<h1 class="--title">Your Files</h1>'
+    account.files.forEach((file) => {
+        list += `
+        <div class="--file Roboto">
+        <br>
+        <h4 class="--filename">${file.name} (${get_size(file.size)})
+        <button class="--copy" id="copy-${file.uuid}" onclick="copy('${file.name.replaceAll(' ', '_')}', '${file.uuid}')">Copy Link</button>
+        <button class="--preview" onclick=window.open('/preview/${file.uuid}.${file.name.replaceAll(' ', '_')}')>Preview</button>
+        <button class="--download" onclick="window.open('/${file.uuid}.${file.name.replaceAll(' ', '_')}/download', '_self')">Download</button>
+        <button class="--delete" onclick="delete_file('${file.name.replaceAll(' ', '_')}', '${file.uuid}', '${account.name}', '${pw}')">Delete</button>
+        </h4>
+        </div>
+        `
+    })
+    if (account.files.length < 1) {
+        list += `<h2 class="--error Roboto">You currently <ins class="--error-ins">don't</ins> have any files saved.</h1>`
     }
     list += `
     <button class="--reload" id="reload" onclick="get_files()">Reload</button>
@@ -189,6 +194,12 @@ app.post('/api/delete/:file', async (req, res) => {
     if (!account) { return res.sendStatus(500) }
     account.files.forEach((_file) => { if (_file.uuid == file.toString().split('.')[0]) { file = _file } })
     if (account.files.includes(file)) {
+        if (!fs.existsSync(`${__dirname}/uploads/${file.uuid}.${file.name}`)) {
+            account.files.splice(account.files.indexOf(file, 1) - 1, 1)
+            fs.writeFileSync('src/data/db.json', JSON.stringify(db, null, 4), err => { err ? console.log(err) : {} })
+            console.log(`${account.name} deleted "${file.name}" (${get_size(file.size)}).`)
+            return res.sendStatus(200)
+        }
         await fs.unlinkSync(`${__dirname}/uploads/${file.uuid}.${file.name}`)
         if (!fs.existsSync(`${__dirname}/uploads/${file.uuid}.${file.name}`)) {
             account.files.splice(account.files.indexOf(file, 1) - 1, 1)
