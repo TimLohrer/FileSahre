@@ -52,6 +52,17 @@ body {
     font-weight: 200;
 }
 
+.--preview {
+    font-weight: 600;
+    color: var(--dark);
+    cursor: pointer;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--yellow);
+    margin-right: 10px;
+}
+
 .--copy {
     font-weight: 600;
     color: var(--dark);
