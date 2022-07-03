@@ -91,6 +91,20 @@ app.get('/upload', async (req, res) => {
     return res.send(build_page('upload'))
 })
 
+app.post('/api/createAccount', (req, res) => {
+    const { name, password } = req.body;
+    console.log(name, password)
+    if (!name || !password) { return res.sendStatus(500); }
+    const db = require('./data/db.json');
+    db['accounts'].push({
+            "name": name,
+            "password": password,
+            "files": []
+    })
+    fs.writeFileSync('src/data/db.json', JSON.stringify(db, null, 4), err => { err ? console.log(err) : {} })
+    return res.sendStatus(200);
+});
+
 app.post('/api/upload', upload.single('file'), async (req, res) => {
     const { file } = req
     const { pw } = req.query

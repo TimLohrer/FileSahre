@@ -38,10 +38,12 @@ window.onload = async () => {
         if (__SESSION__) {
             document.cookie = `timlohrer_session=${__SESSION__};expires=${now.toUTCString()};path=/`
         }
-        if (scopes) { __PASSWORD__ = scopes.api_key }
-        if ((new URL(document.location)).searchParams.get('files') != null) {
-            window.history.replaceState({}, document.title, document.location.origin)
-            get_files();
+        if (scopes) {
+            __PASSWORD__ = scopes.api_key
+            if ((new URL(document.location)).searchParams.get('files') != null) {
+                window.history.replaceState({}, document.title, document.location.origin)
+                get_files();
+            }
         }
     } else {
         document.cookie = `timlohrer_session=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/`
