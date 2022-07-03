@@ -2,5 +2,7 @@
 node_modules
 
 #Files
+.env
+src/data/db.json
 src/uploads/*
 package-lock.json
