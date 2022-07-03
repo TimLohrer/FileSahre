@@ -195,14 +195,14 @@ app.post('/api/delete/:file', async (req, res) => {
     account.files.forEach((_file) => { if (_file.uuid == file.toString().split('.')[0]) { file = _file } })
     if (account.files.includes(file)) {
         if (!fs.existsSync(`${__dirname}/uploads/${file.uuid}.${file.name}`)) {
-            account.files.splice(account.files.indexOf(file, 1) - 1, 1)
+            account.files.splice(account.files.indexOf(file, 1), 1)
             fs.writeFileSync('src/data/db.json', JSON.stringify(db, null, 4), err => { err ? console.log(err) : {} })
             console.log(`${account.name} deleted "${file.name}" (${get_size(file.size)}).`)
             return res.sendStatus(200)
         }
         await fs.unlinkSync(`${__dirname}/uploads/${file.uuid}.${file.name}`)
         if (!fs.existsSync(`${__dirname}/uploads/${file.uuid}.${file.name}`)) {
-            account.files.splice(account.files.indexOf(file, 1) - 1, 1)
+            account.files.splice(account.files.indexOf(file, 1), 1)
             fs.writeFileSync('src/data/db.json', JSON.stringify(db, null, 4), err => { err ? console.log(err) : {} })
             console.log(`${account.name} deleted "${file.name}" (${get_size(file.size)}).`)
             return res.sendStatus(200)
