@@ -1,5 +1,5 @@
 function files() {
-    window.open('/?files', '_self')
+    window.open('/?files=true', '_self')
 }
 
 const title = document.getElementById('title')
